@@ -11,7 +11,8 @@ function invokeAction(action = "", id = " ", name = " ", email = " ", phone = " 
       break;
 
     case "add":
-      console.log("Emtra al add");
+      contacts.addContact(name, email, phone);
+      console.log(name + email + phone);
       break;
 
     case "remove":
@@ -22,8 +23,6 @@ function invokeAction(action = "", id = " ", name = " ", email = " ", phone = " 
       console.warn("\x1B[31m Unknown action type!\x1b[0m");
   }
 }
-
-console.log("123456789");
 
 module.exports = {
   invokeAction: invokeAction

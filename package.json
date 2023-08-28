@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "clear": "^0.1.0",
+    "nanoid": "^4.0.2",
     "yargs": "^17.7.2"
   }
 }

@@ -50,9 +50,13 @@ function removeContact(contactId) {
 }
 
 function addContact(name, email, phone) {
-  console.log("Si entra a ala función");
-  console.log("Prueba de adicionar un contacto");
+  console.log("╔═════════════════════════════════════╗");
+  console.log("║       Adicionar de Contactos        ║");
+  console.log("╚═════════════════════════════════════╝");
   console.log("===================================================");
+  console.log(name);
+  console.log(email);
+  console.log(phone);
 }
 
 module.exports = {
