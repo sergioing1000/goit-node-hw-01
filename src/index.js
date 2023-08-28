@@ -1,10 +1,6 @@
-const contacts = require("./contacts");
-
+const logo = require("./logo.js");
 const yargs = require("yargs");
-
-console.log("Hellow World");
-console.log("123");
-
+const actions = require("./actions.js");
 
 //contacts.readFile();
 //contacts.listContacts();
@@ -12,8 +8,6 @@ console.log("123");
 //contacts.removeContact();
 //contacts.addContact();
 
-
 const argv = yargs(process.argv.slice(2)).argv;
-
-console.log("los valores de los argumentos son:");
-console.log(argv);
+logo.logo();
+actions.invokeAction(argv.action);
