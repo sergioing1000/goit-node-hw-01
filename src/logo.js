@@ -1,6 +1,5 @@
 const clear = require("clear");
 
-
 function logo() {
   
 clear();
@@ -27,6 +26,7 @@ console.log("******************************************");
 console.log("******************************************");
 
 }
+
 
 module.exports = {
   logo: logo
