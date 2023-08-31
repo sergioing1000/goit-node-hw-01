@@ -6,19 +6,19 @@ const path = require("path");
 const contactsPath = "./db/contacts.json";
 
 const absolutePath = path.resolve(contactsPath);
-//console.log("Absolute path:", absolutePath);
+
 
 const fileName = path.basename(contactsPath);
-//console.log("File name:", fileName);
+
 
 const directoryName = path.dirname(contactsPath);
-//console.log("Directory name:", directoryName);
+
 
 const extension = path.extname(contactsPath);
-//console.log("File extension:", extension);
+
 
 const fullPath = path.join(__dirname, directoryName, fileName);
-//console.log("Full path:", fullPath);
+
 
 function readFile() {
   fs.readFile("../db/contacts.json", "utf8", (err, data) => {
@@ -83,7 +83,7 @@ function removeContact(contactId) {
        }
      });
 
-     
+
 
      if (indexFound !== -1) {
        cntcts.splice(indexFound, 1);

@@ -3,11 +3,6 @@ const contacts = require("./contacts.js");
 
 function invokeAction(action = "", id = " ", name = " ", email = " ", phone = " ") {
 
-    // console.log("en actions.js el valor de action es: " + action);
-    // console.log("en actions.js el valor de id es: " + id);
-    // console.log("en actions.js el valor de name es: " + name);
-    // console.log("en actions.js el valor de email es: " + email);
-    // console.log("en actions.js el valor de phone es: " + phone);
 
   switch (action) {
     case "list":
