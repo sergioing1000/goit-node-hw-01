@@ -1,3 +1,4 @@
+const { ChildProcess } = require("child_process");
 const { error } = require("console");
 const fs = require("fs");
 const path = require("path");
@@ -37,13 +38,56 @@ function listContacts() {
 }
 
 function getContactById(contactId) {
-  readFileetContact(contactId);
+  fs.readFile("../db/contacts.json", "utf8", (err, data) => {
+    if (err) {
+      console.error("Error al leer el archivo:", err);
+      return;
+    }
+    const cntcts = JSON.parse(data);
+    let idFound = false;
+
+    cntcts.forEach((element) => {
+      if (element.id === contactId) {
+        console.table(element);
+        idFound = true;
+      }
+    });
+
+    if (!idFound) {
+      console.log(
+        "\x1b[31mNo existe un contacto con el id : \x1b[0m" + contactId
+      );
+    }
+  });
 }
 
 function removeContact(contactId) {
-  console.log("Si entra a ala función");
-  console.log("Prueba de remover un contacto");
-  console.log("===================================================");
+  
+  console.log("el contacto a remover es el que tenga el id " + contactId);
+
+   fs.readFile("../db/contacts.json", "utf8", (err, data) => {
+     if (err) {
+       console.error("Error al leer el archivo:", err);
+       return;
+     }
+     const cntcts = JSON.parse(data);
+     let idFound = false;
+
+     cntcts.forEach((element) => {
+       if (element.id === contactId) {
+         console.log("si se encontró el elemento a remover");
+         
+         idFound = true;
+       }
+     });
+
+     if (!idFound) {
+       console.log(
+         "\x1b[31mNo existe un contacto con el id : \x1b[0m" + contactId
+       );
+     }
+   });
+  
 }
 
 function addContact(name, email, phone) {
@@ -59,8 +103,12 @@ function addContactTitle() {
 }
 
 async function addContactMain(name, email, phone) {
+
+  const customAlphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_"
+  const id = nanoid(customAlphabet, 21);
+  
   const newContact = {
-    id: "111111",
+    id: id,
     name: name,
     email: email,
     phone: phone,
@@ -94,28 +142,6 @@ async function addContactMain(name, email, phone) {
   );
 }
 
-function readFileetContact(id) {
-  fs.readFile("../db/contacts.json", "utf8", (err, data) => {
-    if (err) {
-      console.error("Error al leer el archivo:", err);
-      return;
-    }
-    const cntcts = JSON.parse(data);
-    let idFound = false;
-
-    cntcts.forEach((element) => {
-      if (element.id === id) {
-        console.table(element);
-        idFound = true;
-      }
-    });
-
-    if (!idFound) {
-      console.log("\x1b[31mNo existe un contacto con el id : \x1b[0m" + id);
-    }
-  });
-}
-
 module.exports = {
   readFile: readFile,
   listContacts: listContacts,
@@ -123,3 +149,17 @@ module.exports = {
   removeContact: removeContact,
   addContact: addContact,
 };
+
+function nanoid(string, qty) {
+
+  const arreglo = [...string];
+
+  let  id = "";
+
+  for (i = 0; i < qty; i++) {
+    id = id + arreglo[Math.floor(Math.random() * arreglo.length)];
+  }
+
+  return id;
+    
+}

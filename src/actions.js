@@ -19,11 +19,11 @@ function invokeAction(action = "", id = " ", name = " ", email = " ", phone = " 
       break;
 
     case "add":
-      contacts.addContact(name, email, phone);      
+      contacts.addContact(name, email, phone);
       break;
 
     case "remove":
-      console.log("Emtra al remove");
+      contacts.removeContact(id);
       break;
 
     default:
