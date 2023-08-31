@@ -83,6 +83,7 @@ function removeContact(contactId) {
        }
      });
 
+     
 
      if (indexFound !== -1) {
        cntcts.splice(indexFound, 1);
