@@ -15,13 +15,13 @@
 
 ## add
 **Picture**
-https://monosnap.com/file/Cc6tytZHbDbWXQME0Rtq3KXz9GEjgy
+--action add  [screenshoot](https://monosnap.com/file/Cc6tytZHbDbWXQME0Rtq3KXz9GEjgy)
 
 **Video**
 
 ## remove
 **Picture**
-https://monosnap.com/file/ZbrtdmoblipRFzTJrfNYJcNpF75lS5
+--action remove  [screenshoot](https://monosnap.com/file/ZbrtdmoblipRFzTJrfNYJcNpF75lS5)
 
 **Video**
 
