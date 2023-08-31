@@ -73,19 +73,40 @@ function removeContact(contactId) {
      const cntcts = JSON.parse(data);
      let idFound = false;
 
-     cntcts.forEach((element) => {
+     let indexFound = -1;
+     
+
+     cntcts.forEach((element,index) => {
        if (element.id === contactId) {
-         console.log("si se encontró el elemento a remover");
-         
-         idFound = true;
+         console.log("si se encontró el elemento a remover");         
+         indexFound = index;
        }
      });
 
-     if (!idFound) {
+
+     if (indexFound !== -1) {
+       cntcts.splice(indexFound, 1);
+
+       const updatedContacts = JSON.stringify(cntcts, null, 2);
+
+        fs.writeFile("../db/contacts.json", updatedContacts, "utf8", (err) => {
+          if (err) {
+            console.error("Error writing file:", err);
+            return;
+          }
+
+          console.table(cntcts);
+
+          console.log(`Contact with id: ${contactId} was REMOVED successfully!`);
+        });
+
+     } else {
        console.log(
          "\x1b[31mNo existe un contacto con el id : \x1b[0m" + contactId
        );
      }
+
+
    });
   
 }
